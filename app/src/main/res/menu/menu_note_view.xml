@@ -1,0 +1,81 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.felbsn.a16011075proj.NoteView">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_delete"
+
+
+        android:icon="@mipmap/ic_launcher_round"
+        android:orderInCategory="100"
+        android:title="Sil"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_color"
+        android:title="Renk"
+        app:showAsAction="always"
+
+        >
+
+
+
+        <menu
+            app:showAsAction="always"
+
+            >
+            <item
+                android:id="@+id/cBeyaz"
+
+                android:icon="@drawable/white"
+                android:title="Beyaz"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/cMavi"
+
+                android:icon="@drawable/ballblue"
+                android:title="Mavi"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/cPembe"
+
+                android:icon="@drawable/pink"
+                android:title="Pembe"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/cAltin"
+
+                android:icon="@drawable/gold"
+                android:title="Altın"
+                app:showAsAction="always" />
+        </menu>
+    </item>
+
+<!--
+
+    <item
+        android:id="@+id/action_notification1a"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="action_notification"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_share_us"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="vvv />
+            <item android:id="@+id/action_rate_us"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title=" aaa" />
+            <item
+                android:id="@+id/action_about"
+                android:checked="false"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="ccc" />
+        </menu>
+    </item> -->
+
+</menu>

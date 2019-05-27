@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">N00Te </string>
+    <string name="title_activity_note_view">NoteView</string>
+    <string name="tab_text_1">Not Al</string>
+    <string name="tab_text_2">Ekler </string>
+    <string name="tab_text_3">Hatırlatıcı</string>
+    <string name="tab_text_4">Konum</string>
+
+
+
+    <string name="action_settings">Ayarlar</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="action_color">Renk</string>
+</resources>
