@@ -89,7 +89,6 @@ public class NotificationEventRecv extends  WakefulBroadcastReceiver{
 
             serviceIntent.putExtra("test" ,"Vaavv");
 
-
             startWakefulService(context, serviceIntent);
 
         }

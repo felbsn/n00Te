@@ -3,6 +3,7 @@ package com.felbsn.a16011075proj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.felbsn.a16011075proj.MainActivity;
 import com.felbsn.a16011075proj.NoteItem;
@@ -12,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -53,13 +55,31 @@ public class NoteHandler {
         Date current = new Date();
 
         NoteItem item = getNoteByID(noteID);
-
-        for (NoteItem.Reminder reminder :item.reminderDates) {
-            if(reminder.date.before(current))
+        if(item != null)
+        {
+            if(item.reminderDates != null)
             {
-                item.reminderDates.remove(reminder);
-            }
+
+                for (Iterator<NoteItem.Reminder> iterator = item.reminderDates.iterator(); iterator.hasNext();) {
+                    NoteItem.Reminder reminder = iterator.next();
+                    if(reminder.date.before(current))
+                    {
+                        iterator.remove();
+                    }
+
+                }
+
+
+
+            }else
+                item.reminderDates = new ArrayList<>();
+
+        }else
+        {
+            Log.i(getClass().getSimpleName(), "Burada item null olarak gelmiş diyor , eğer boyle ilse boyle bir not olamaması gerek ::-> " +noteID);
         }
+
+
     }
 
     private NoteHandler(Context ctx)

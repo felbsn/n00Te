@@ -24,6 +24,16 @@
 
         <receiver android:name=".NotificationEventRecv" />
 
+        <receiver android:name=".NotificationServiceStarterReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
+
+
 
         <activity
             android:name=".NoteView"

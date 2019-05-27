@@ -37,7 +37,7 @@ public class NotificationIntentService extends IntentService {
         Intent intent = new Intent(context, NotificationIntentService.class);
         intent.setAction(ACTION_DELETE);
         return intent;
-    }git
+    }
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -58,7 +58,7 @@ public class NotificationIntentService extends IntentService {
     }
 
     private void processDeleteNotification(Intent intent) {
-        // Log something?
+        Log.i(getClass().getSimpleName(), "processDeleteNotification  some delete occurs");
     }
 
     private void processStartNotification(int targetID) {
