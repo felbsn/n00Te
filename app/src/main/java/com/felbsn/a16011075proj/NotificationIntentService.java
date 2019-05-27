@@ -13,7 +13,7 @@ import java.util.Date;
 
 
 /**
- * Created by klogi
+ * Created by klogi !!! extended by fatih
  *
  *
  */
