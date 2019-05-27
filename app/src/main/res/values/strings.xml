@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">N00Te </string>
+    <string name="app_name">N00Te</string>
     <string name="title_activity_note_view">NoteView</string>
     <string name="tab_text_1">Not Al</string>
     <string name="tab_text_2">Ekler </string>
