@@ -19,9 +19,17 @@ public final class NotificationServiceStarterReceiver extends BroadcastReceiver 
         if (serviceIntent != null) {
             // Start the service, keeping the device awake while it is launching.
 
-            serviceIntent.putExtra("targetAlarmID" , intent.getIntExtra("targetAlarmID" , 0));
 
-            Log.i(getClass().getSimpleName(), "On Broad cast i received ..... : ");
+            NoteHandler handler =  NoteHandler.getInstance(context);
+
+            //
+            //
+            //  burada butun expired olmamış requestleri toplayıp servisleri başlatmam lazım ama şimdilik yapmıyorum
+            //
+            //
+
+            serviceIntent.putExtra("targetAlarmID" , intent.getIntExtra("targetAlarmID" , 0));
+            Log.i(getClass().getSimpleName(), "On Broad cast i received ..... : "  + intent.getIntExtra("targetAlarmID" , -1));
 
 
             startWakefulService(context, serviceIntent);
