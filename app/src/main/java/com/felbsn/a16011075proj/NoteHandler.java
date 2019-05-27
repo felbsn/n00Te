@@ -154,6 +154,12 @@ public class NoteHandler {
 
     }
 
+
+    public void deleteNote(NoteItem obj)
+    {
+        mNotes.remove(obj);
+    }
+
     public  int getNextReminderID()
     {
             SharedPreferences sharedPreferences = appContext.getSharedPreferences("shared preferences", 0);

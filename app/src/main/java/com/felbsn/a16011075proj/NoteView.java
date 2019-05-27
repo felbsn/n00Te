@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -153,7 +154,7 @@ public class NoteView extends AppCompatActivity {
                     Snackbar.make(view, "Not Kaydedildi", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
-                    MainActivity.instance.saveData();
+                    NoteHandler.getInstance(getApplicationContext()).saveNotes();
                 }else
                 if(1 == st)
                 {
@@ -345,80 +346,40 @@ public class NoteView extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.cAltin) {
 
-            if(instance.selectedNote != null)
-            {
-                instance.selectedNote.colorText = "#FFD700";
-                if(textRootView != null)   textRootView.setBackgroundColor( Color.parseColor(instance.selectedNote.colorText) );
+        String colorStr = "#e0e0e0";
 
-                instance.selectedNote.extrasLocations.add("cAltin");
+        if (id == R.id.cAltin) colorStr ="#FFD700";
 
+        if (id == R.id.cBeyaz) colorStr= "#e0e0e0";
 
-                mainTex.setText( instance.selectedNote.mNoteText );
+        if (id == R.id.cMavi)  colorStr = "#8eafe2";
 
-                MainActivity.mAdapter.reflesh();
-            }
+        if (id == R.id.cPembe) colorStr = "#FFC0CB";
 
-            return true;
+        if(this.selectedNote != null)
+        {
+
+            selectedNote.colorText = colorStr;
+            if(textRootView != null)   textRootView.setBackgroundColor( Color.parseColor(colorStr) );
         }
-
-        if (id == R.id.cBeyaz) {
-
-            if(instance.selectedNote != null)
-            {
-                instance.selectedNote.colorText = "#e0e0e0";
-                if(textRootView != null)   textRootView.setBackgroundColor( Color.parseColor(instance.selectedNote.colorText) );
-
-            }
-            return true;
-        }
-
-
-        if (id == R.id.cMavi) {
-            if(instance.selectedNote != null)
-            {
-                instance.selectedNote.colorText = "#8eafe2";
-                if(textRootView != null)   textRootView.setBackgroundColor( Color.parseColor(instance.selectedNote.colorText) );
-
-
-            }
-            return true;
-        }
-
-
-        if (id == R.id.cPembe) {
-
-            if(instance.selectedNote != null)
-            {
-                instance.selectedNote.colorText = "#FFC0CB";
-                if(textRootView != null)   textRootView.setBackgroundColor( Color.parseColor(instance.selectedNote.colorText) );
-
-            }
-            return true;
-        }
-
-
 
         if (id == R.id.action_delete) {
 
-            if(instance.selectedNote != null)
+            if(selectedNote != null)
             {
-                MainActivity.mAdapter.delete(instance.selectedNote );
-                MainActivity.instance.saveData();
+
+                NoteHandler handler =  NoteHandler.getInstance(this);
+                handler.deleteNote(selectedNote);
+                handler.saveNotes();
 
                 finish();
             }
 
-            return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -623,7 +584,11 @@ public class NoteView extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        MainActivity.instance.saveData();
-        MainActivity.mAdapter.reflesh();
+        NoteHandler handler = NoteHandler.getInstance(this);
+
+        handler.saveNotes();
+
+        if(MainActivity.mAdapter != null) MainActivity.mAdapter.reflesh();
+
     }
 }
